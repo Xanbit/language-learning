@@ -2,7 +2,7 @@
  * This example was written by Bruno Lowagie in answer to the following questions:
  * http://stackoverflow.com/questions/28503491/large-table-in-table-cell-invoke-page-break
  */
-package com.aaivee.education.language.swedish.generator;
+package com.xanbit.education.language.swedish.generator;
  
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;

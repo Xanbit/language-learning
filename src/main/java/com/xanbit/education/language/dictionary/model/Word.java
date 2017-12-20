@@ -1,4 +1,4 @@
-package com.aaivee.education.language.dictionary.model;
+package com.xanbit.education.language.dictionary.model;
 
 import java.util.List;
 

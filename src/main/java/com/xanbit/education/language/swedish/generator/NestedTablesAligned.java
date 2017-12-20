@@ -2,7 +2,7 @@
  * This example was written by Bruno Lowagie in answer to the following question:
  * http://stackoverflow.com/questions/26625455/unable-to-left-align-nested-tables-inside-a-cell
  */
-package com.aaivee.education.language.swedish.generator;
+package com.xanbit.education.language.swedish.generator;
  
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;

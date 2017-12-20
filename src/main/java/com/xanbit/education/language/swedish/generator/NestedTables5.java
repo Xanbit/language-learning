@@ -2,7 +2,7 @@
  * This example was written by Bruno Lowagie in answer to:
  * http://stackoverflow.com/questions/36259214
  */
-package com.aaivee.education.language.swedish.generator;
+package com.xanbit.education.language.swedish.generator;
  
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;

@@ -1,11 +1,11 @@
-package com.aaivee.education.language.dictionary.pdf;
+package com.xanbit.education.language.dictionary.pdf;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Set;
 
-import com.aaivee.education.language.dictionary.xml.model.Word;
+import com.xanbit.education.language.dictionary.xml.model.Word;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.PageSize;

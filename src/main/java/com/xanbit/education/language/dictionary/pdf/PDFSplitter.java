@@ -1,4 +1,4 @@
-package com.aaivee.education.language.dictionary.pdf;
+package com.xanbit.education.language.dictionary.pdf;
 
 import java.io.IOException;
 import java.util.*;

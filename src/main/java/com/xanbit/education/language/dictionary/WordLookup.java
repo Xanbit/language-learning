@@ -1,25 +1,22 @@
-package com.aaivee.education.language.dictionary;
+package com.xanbit.education.language.dictionary;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import com.aaivee.education.language.dictionary.pdf.PDFSplitter;
-import com.aaivee.education.language.dictionary.pdf.PDFWriter;
-import com.aaivee.education.language.dictionary.xml.model.SvEnDictionaryKTH;
-import com.aaivee.education.language.dictionary.xml.model.Word;
+import com.xanbit.education.language.dictionary.pdf.PDFSplitter;
+import com.xanbit.education.language.dictionary.pdf.PDFWriter;
+import com.xanbit.education.language.dictionary.xml.model.SvEnDictionaryKTH;
+import com.xanbit.education.language.dictionary.xml.model.Word;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.itextpdf.text.DocumentException;
@@ -137,7 +134,7 @@ public class WordLookup {
         	
         	ObjectMapper objectMapper = new XmlMapper();
         	
-        	dictionary = objectMapper.readValue(svEnFile, com.aaivee.education.language.dictionary.xml.model.SvEnDictionaryKTH.class);
+        	dictionary = objectMapper.readValue(svEnFile, SvEnDictionaryKTH.class);
         	
             
         } catch (IOException e) {

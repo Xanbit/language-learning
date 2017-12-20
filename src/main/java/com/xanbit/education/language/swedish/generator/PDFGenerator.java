@@ -1,4 +1,4 @@
-package com.aaivee.education.language.swedish.generator;
+package com.xanbit.education.language.swedish.generator;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;

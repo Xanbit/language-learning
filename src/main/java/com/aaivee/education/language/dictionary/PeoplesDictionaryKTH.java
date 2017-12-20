@@ -1,4 +1,4 @@
-package com.aaivee.apps.education.language.dictionary;
+package com.aaivee.education.language.dictionary;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -8,7 +8,7 @@ import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
-import com.aaivee.apps.education.language.dictionary.model.SvEnDictionaryKTH;
+import com.aaivee.education.language.dictionary.model.SvEnDictionaryKTH;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 

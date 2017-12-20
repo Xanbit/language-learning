@@ -1,4 +1,4 @@
-package com.aaivee.apps.education.language.swedish.vocab_builder;
+package com.aaivee.education.language.swedish.vocab_builder;
 
 /**
  * Hello world!

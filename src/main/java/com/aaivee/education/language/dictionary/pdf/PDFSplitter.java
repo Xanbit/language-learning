@@ -1,14 +1,7 @@
-package com.aaivee.apps.education.language.dictionary.pdf;
+package com.aaivee.education.language.dictionary.pdf;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.parser.PdfTextExtractor;
@@ -34,7 +27,7 @@ public class PDFSplitter {
         }
 		
 		System.out.println("text extracted from PDF : total distict words : "+wordsMap.keySet().size());
-		List<Map.Entry<String, Integer>> list = new LinkedList(wordsMap.entrySet());
+		List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(wordsMap.entrySet());
 	    Collections.sort( list, new Comparator<Map.Entry<String, Integer>>() {
 	        public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
 	            return (o2.getValue()).compareTo(o1.getValue());

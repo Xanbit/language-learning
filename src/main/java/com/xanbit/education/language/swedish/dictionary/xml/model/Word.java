@@ -1,4 +1,4 @@
-package com.xanbit.education.language.dictionary.xml.model;
+package com.xanbit.education.language.swedish.dictionary.xml.model;
 
 import java.util.ArrayList;
 import java.util.List;

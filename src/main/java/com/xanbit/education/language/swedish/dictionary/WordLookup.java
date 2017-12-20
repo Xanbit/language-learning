@@ -1,4 +1,4 @@
-package com.xanbit.education.language.dictionary;
+package com.xanbit.education.language.swedish.dictionary;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,10 +13,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.xanbit.education.language.dictionary.pdf.PDFSplitter;
-import com.xanbit.education.language.dictionary.pdf.PDFWriter;
-import com.xanbit.education.language.dictionary.xml.model.SvEnDictionaryKTH;
-import com.xanbit.education.language.dictionary.xml.model.Word;
+import com.xanbit.education.language.swedish.dictionary.pdf.PDFSplitter;
+import com.xanbit.education.language.swedish.dictionary.pdf.PDFWriter;
+import com.xanbit.education.language.swedish.dictionary.xml.model.SvEnDictionaryKTH;
+import com.xanbit.education.language.swedish.dictionary.xml.model.Word;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.itextpdf.text.DocumentException;

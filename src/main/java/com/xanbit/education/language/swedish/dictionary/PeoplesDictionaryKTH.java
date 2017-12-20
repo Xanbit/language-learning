@@ -8,7 +8,6 @@ import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
-import com.xanbit.education.language.swedish.dictionary.model.SvEnDictionaryKTH;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
@@ -28,23 +27,9 @@ public class PeoplesDictionaryKTH {
     
     private static final String SWEDISH_TO_ENGLISH_DICTIONARY_XML_PATH = "/Users/markiv/peoples-dictionary-kth-sv-en.x";
     
-    public static void main(String[] args) {
-        
-        try {
-            
-            //downloadDictionaries();
-        	
-        	File svEnFile = new File(SWEDISH_TO_ENGLISH_DICTIONARY_XDXF_PATH);
-        	
-        	ObjectMapper objectMapper = new XmlMapper();
-        	
-        	SvEnDictionaryKTH dictionary = objectMapper.readValue(svEnFile, SvEnDictionaryKTH.class);
-        	
-        	System.out.println(dictionary);
-            
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args) throws IOException {
+
+        downloadDictionaries();
     }
 
 	private static void downloadDictionaries() throws IOException {

@@ -1,0 +1,5 @@
+spring:
+    application:
+        name: xanbit-education-language
+server:
+    port: 9000

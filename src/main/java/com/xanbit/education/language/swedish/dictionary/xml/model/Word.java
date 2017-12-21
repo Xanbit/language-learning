@@ -1,11 +1,14 @@
 package com.xanbit.education.language.swedish.dictionary.xml.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Word {
@@ -95,11 +98,13 @@ public class Word {
 	}
 	
 	public List<String> getDefinitionValues() {
-		List<String> meanings = new ArrayList<String>();
-		for (Example example : definitions) {
-			meanings.add(example.getValue());
-		}
-		return meanings;
+		if (definitions == null)
+			return Collections.emptyList();
+
+		return definitions
+				.stream()
+				.map(def -> def.getValue() + " ")
+				.collect(Collectors.toList());
 	}
 	
 	public List<String> getParadigmInflections() {
@@ -113,6 +118,39 @@ public class Word {
 			}
 		}
 		return inflections;
+	}
+
+	public String getTranslationsString() {
+
+		StringBuilder builder = new StringBuilder();
+
+		if (translations != null)
+			translations.stream().forEach(tr -> builder.append(tr.getValue() + " ,"));
+
+		return builder.toString();
+	}
+
+	public String getSynonymsString() {
+
+		StringBuilder builder = new StringBuilder();
+
+		if (synonyms != null)
+			synonyms.stream().forEach(syn -> builder.append(syn.getValue() + " ,"));
+
+		return builder.toString();
+	}
+
+
+
+	public Set<String> getExamplesTranslations() {
+		if (getExamples() == null)
+			return Collections.emptySet();
+
+		return examples
+				.stream()
+				.map(ex -> ex.getValue()+" : "+ex.getTranslation().getValue())
+				.collect(Collectors.toSet());
+
 	}
 	
 	@Override
@@ -182,7 +220,6 @@ public class Word {
 		
 		return builder.toString();
 	}
-	
 }
 
 

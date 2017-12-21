@@ -1,19 +1,17 @@
 package com.xanbit.education.language.controller;
 
-import com.itextpdf.text.DocumentException;
+import com.xanbit.education.language.exception.PDFGenerationException;
 import com.xanbit.education.language.extraction.PDFExtractor;
 import com.xanbit.education.language.model.ExtractedPage;
-import com.xanbit.education.language.swedish.dictionary.WordLookup;
-import com.xanbit.education.language.swedish.dictionary.pdf.PDFWriter;
 import com.xanbit.education.language.swedish.dictionary.xml.model.Word;
-import com.xanbit.education.language.swedish.generator.PDFGenerator;
+import com.xanbit.education.language.swedish.lookup.WordLookupService;
+import com.xanbit.education.language.writer.PDFGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -26,33 +24,39 @@ public class EbookTranslationController {
     private PDFExtractor pdfExtractor;
 
     @Autowired
-    private WordLookup wordLookup;
+    private WordLookupService wordLookupService;
 
     @Autowired
     private PDFGenerator pdfGenerator;
 
-    private static final String INPUT_FILE = "C:\\Users\\MKUVC6\\Documents\\GitHub\\language-learning\\src\\main\\resources\\ebooks\\vision-for-sverige-2025.pdf";
-    private static final String OUTPUT_FILE = "C:\\Users\\MKUVC6\\Documents\\GitHub\\language-learning\\generated\\test.pdf";
+    private static final String SAMPLE_PDF_PATH = "/Users/markiv/svenskasamplepdf.pdf";
+    private static final String USER_INPUT_TEMP_SAVE_FILE = "/Users/markiv/user-input.txt";
+    private static final String OUTPUT_DIR = "/Users/markiv/";
 
-    @RequestMapping("/ebooklookup")
-    public String lookupWordsFromEbook() throws IOException, DocumentException {
+    @RequestMapping("/ebooklookup/{ebook}/{pageNumber}")
+    public String lookupWordsFromEbook(@PathVariable String ebook, @PathVariable int pageNumber) throws IOException, PDFGenerationException {
 
-        List<ExtractedPage> extractedPages = pdfExtractor.extractPDF(INPUT_FILE);
+        System.out.println("Request for ebook words lookup. Ebook : "+ebook+" , pageNumber : "+pageNumber);
 
-        ExtractedPage page = extractedPages.get(5);
-        System.out.println("page 7 : ");
-        page.getExtractedWords().stream().forEach(System.out::println);
+        List<ExtractedPage> extractedPages = pdfExtractor.extractWords(SAMPLE_PDF_PATH);
+
+        System.out.println("Pages Extracted. Total Pages : "+extractedPages.size());
+
+        ExtractedPage page = extractedPages.get(pageNumber);
+
         Set<String> userWords = getUserInput(page);
 
         List<Word> lookedUpWords = new ArrayList<>();
 
         Set<String> missingWordsFromDictionary = new HashSet<>();
 
-        wordLookup.lookupWords(userWords, lookedUpWords, missingWordsFromDictionary);
+        wordLookupService.lookupWords(userWords, lookedUpWords, missingWordsFromDictionary);
 
-        pdfGenerator.writePDF(OUTPUT_FILE, lookedUpWords, missingWordsFromDictionary);
+        String outputFile = OUTPUT_DIR+ebook+"-"+pageNumber+".pdf";
 
-        return "In Progress...";
+        pdfGenerator.generate(lookedUpWords, missingWordsFromDictionary, outputFile);
+
+        return "Request completed : Generated PDF is kept at : "+outputFile;
     }
 
     private Set<String> getUserInput(ExtractedPage page) throws IOException {
@@ -61,17 +65,58 @@ public class EbookTranslationController {
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-        for (String w : page.getExtractedWords()) {
-            System.out.println("Checkpoint 1 : " + w);
+        System.out.println("Please provide input to filter words. Once a word is flashed, press 'n' if you don't know the word.");
+        System.out.println("Else press enter/return. Press 'q' at any time to finish the input process.");
+
+        for (String w : page.getAllWords()) {
+            System.out.println("Word :- "+w);
             String input = bufferedReader.readLine();
-            if (input.equalsIgnoreCase("y")){
+            if (input.equalsIgnoreCase("n")){
                 userWords.add(w);
+            } else if (input.equalsIgnoreCase("q")){
+                bufferedReader.close();
+                System.out.println("User input process stopped by user, total words filtered : "+userWords.size());
+                return userWords;
             }
         }
 
         bufferedReader.close();
-
+        System.out.println("User input process completed, total words filtered : "+userWords.size());
         return userWords;
+    }
+
+    private Set<String> getUserInput(Set<String> splittedWords) throws IOException {
+        Set<String> notKnownWords = new HashSet<String>();
+
+        System.out.println("Press n if you don't know the word, followed by enter or else just enter !!");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        for (String string : splittedWords) {
+            System.out.println(string);
+            String userInput = reader.readLine();
+            if (userInput.equalsIgnoreCase("n")) {
+                notKnownWords.add(string);
+                saveUserInput(notKnownWords);
+            }else if (userInput.equalsIgnoreCase("q")){
+                return notKnownWords;
+            }
+        }
+        reader.close();
+        return notKnownWords;
+    }
+
+    private void saveUserInput(Set<String> notKnownWords) throws IOException {
+        FileOutputStream fos = new FileOutputStream(USER_INPUT_TEMP_SAVE_FILE);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(notKnownWords);
+        oos.close();
+    }
+
+    private List<String> readUserInput() throws IOException, ClassNotFoundException {
+        FileInputStream fis = new FileInputStream("t.tmp");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        List<String> res = (List<String>) ois.readObject();
+        ois.close();
+        return res;
     }
 
 }

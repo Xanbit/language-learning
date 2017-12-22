@@ -14,7 +14,7 @@ import java.util.Set;
 @Service
 public class WordLookupService {
 
-    private static final String SWEDISH_TO_ENGLISH_DICTIONARY_XML_PATH = "/Users/markiv/peoples-dictionary-kth-sv-en.xml";
+    private static final String SWEDISH_TO_ENGLISH_DICTIONARY_XML_PATH = "dictionary/peoples-dictionary-kth-sv-en.xml";
 
     private static SvEnDictionaryKTH dictionary = loadXMLDictionary();
 
@@ -52,7 +52,7 @@ public class WordLookupService {
     private static SvEnDictionaryKTH loadXMLDictionary(){
     	try {
         	
-        	File svEnFile = new File(SWEDISH_TO_ENGLISH_DICTIONARY_XML_PATH);
+        	File svEnFile = new File(WordLookupService.class.getClassLoader().getResource(SWEDISH_TO_ENGLISH_DICTIONARY_XML_PATH).getFile());
         	
         	ObjectMapper objectMapper = new XmlMapper();
         	

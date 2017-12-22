@@ -29,12 +29,16 @@ public class EbookTranslationController {
     @Autowired
     private PDFGenerator pdfGenerator;
 
-    private static final String SAMPLE_PDF_PATH = "/Users/markiv/svenskasamplepdf.pdf";
+    private static final String SAMPLE_PDF_PATH = "ebooks/vision-for-sverige-2025.pdf";
     private static final String USER_INPUT_TEMP_SAVE_FILE = "/Users/markiv/user-input.txt";
     private static final String OUTPUT_DIR = "/Users/markiv/";
 
-    @RequestMapping("/ebooklookup/{ebook}/{pageNumber}")
-    public String lookupWordsFromEbook(@PathVariable String ebook, @PathVariable int pageNumber) throws IOException, PDFGenerationException {
+    @RequestMapping("/scanbook/{ebook}")
+    public String lookupWordsFromEbook(@PathVariable String ebook) throws IOException, PDFGenerationException {
+
+        System.out.println("Reached Here : "+ebook);
+
+        int pageNumber = 1;
 
         System.out.println("Request for ebook words lookup. Ebook : "+ebook+" , pageNumber : "+pageNumber);
 

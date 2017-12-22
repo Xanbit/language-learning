@@ -19,7 +19,7 @@ public class PDFExtractor {
 
 		List<ExtractedPage> extractedPages = new ArrayList<>();
 
-		PdfReader reader = new PdfReader(pdfPath);
+		PdfReader reader = new PdfReader(getClass().getClassLoader().getResource(pdfPath).getFile());
 		
 		for(int i=0;i<reader.getNumberOfPages();i++) {
 			String text = PdfTextExtractor.getTextFromPage(reader, (i+1));

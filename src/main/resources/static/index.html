@@ -46,11 +46,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="metadata in metadataList">
+            <tr ng-repeat="metadata in metadataList" ng-controller="FilterCtrl">
                 <td><a href="/archive/document/{{metadata.uuid}}">{{metadata.fileName}}</a></td>
                 <td><a href="/archive/document/{{metadata.uuid}}">{{metadata.personName}}</a></td>
                 <td><a href="/archive/document/{{metadata.uuid}}">{{metadata.documentDate | date:'yyyy-MM-dd'}}</a></td>
-                <td><a href="/scanbook/{{metadata.uuid}}">SCAN</a></td>
+                <td><button ng-click="startFiltering()">FILTER WORDS</button></td>
             </tr>
             </tbody>
         </table>
@@ -84,6 +84,7 @@
     </div>
 </div>
 <script src="lib/angular/angular-1.2.16.js"></script>
+<script src="lib/angular/ng-dialog-likeastore.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

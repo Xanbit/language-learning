@@ -1,5 +1,9 @@
 spring:
     application:
         name: xanbit-education-language
+    http:
+        multipart:
+            maxFileSize: 50MB
+            maxRequestSize: 50MB
 server:
     port: 9000

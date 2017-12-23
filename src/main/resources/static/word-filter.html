@@ -1,0 +1,38 @@
+<html ng-app="archive">
+<head>
+    <meta charset="utf8" />
+    <title>Document Archive</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+<br>
+<div id="wrap">
+    <div id="header" align="center">
+        <h1>Filter Out Already Known Words</h1>
+    </div>
+    <div id="main" ng-controller="ArchiveCtrl">
+        <h2>File : {{page.fileName}}  Page : {{page.pageNumber}}</h2>
+        <table id="table-6">
+            <thead>
+            <tr>
+                <th>Word</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="word in page.allWords" ng-controller="FilterCtrl">
+                <td ng-model="word">{{word}}</a></td>
+                <td><button ng-click="filterOut()">FILTER OUT</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="footer">
+        <p>Xanbit 2017</p>
+    </div>
+</div>
+<script src="lib/angular/angular-1.2.16.js"></script>
+<script src="lib/angular/ng-dialog-likeastore.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

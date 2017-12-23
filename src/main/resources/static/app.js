@@ -1,4 +1,4 @@
-var app = angular.module('archive', []);
+var app = angular.module('archive', ['ngDialog']);
 
 app.directive('fileModel', [ '$parse', function($parse) {
     return {
@@ -28,6 +28,33 @@ app.service('ArchiveService', [ '$http', '$rootScope', function($http, $rootScop
         }).error(function() {
         });
     }
+}]);
+
+app.service('WordsFilterService', [ '$http', '$rootScope', function($http, $rootScope) {
+    this.startFilterProcess = function(fileName, user, url) {
+        $http.get(url, {
+            params : {
+                fileName : fileName,
+                user : user
+            }
+        }).success(function(response) {
+            $rootScope.page = response;
+        }).error(function() {
+        });
+    }
+    this.filterOut = function(fileName, pageNumber, word, url) {
+        $http.get(url, {
+            params : {
+                fileName : fileName,
+                pageNumber : pageNumber,
+                word : word
+            }
+        }).success(function(response) {
+            $rootScope.wordToFilter = response;
+        }).error(function() {
+        });
+    }
+
 }]);
 
 app.service('fileUpload', ['$http','ArchiveService', function($http, ArchiveService) {
@@ -72,6 +99,25 @@ app.controller('ArchiveCtrl', function($scope, $http) {
         });
     };
 });
+
+app.controller('FilterCtrl', [ '$scope', 'WordsFilterService', 'ngDialog',
+    function($scope, WordsFilterService, ngDialog) {
+        $scope.startFiltering = function() {
+            var fileName = $scope.metadata.uuid;
+            var user = $scope.metadata.personName;
+            var url = "/words/startFiltering";
+            WordsFilterService.startFilterProcess(fileName, user, url);
+            ngDialog.open({template: 'word-filter.html'});
+        };
+        $scope.filterOut = function() {
+            var url = "/words/filterOut";
+            var fileName = $scope.page.fileUUID;
+            var pageNumber = $scope.page.pageNumber;
+            var word = $scope.word;
+            WordsFilterService.filterOut(fileName, pageNumber, word, url);
+        };
+
+    } ]);
 
 app.run(function($rootScope, $http) {
     $http.get("http://localhost:9000/archive/documents").success(

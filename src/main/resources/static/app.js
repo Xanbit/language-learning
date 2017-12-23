@@ -50,10 +50,36 @@ app.service('WordsFilterService', [ '$http', '$rootScope', function($http, $root
                 word : word
             }
         }).success(function(response) {
-            $rootScope.wordToFilter = response;
+            $rootScope.page = response;
         }).error(function() {
         });
     }
+    this.nextPage = function(fileName, pageNumber, url) {
+            $http.get(url, {
+                params : {
+                    fileName : fileName,
+                    pageNumber : pageNumber
+                }
+            }).success(function(response) {
+                $rootScope.page = response;
+            }).error(function() {
+            });
+        }
+    this.finishFiltering = function(url) {
+            $http.get(url, {
+                responseType:'arraybuffer'
+            }).success(function(response) {
+                $rootScope.generatedPDF = response;
+                console.log('generated binary data is ' + response);
+                var blob = new Blob([response], { type: 'application/pdf' });
+                console.log('generated data is ' + blob);
+                var downloadLink = angular.element('<a></a>');
+                downloadLink.attr('href',window.URL.createObjectURL(blob));
+                downloadLink.attr('download', 'generated.pdf');
+                			downloadLink[0].click();
+            }).error(function() {
+            });
+        }
 
 }]);
 
@@ -100,13 +126,14 @@ app.controller('ArchiveCtrl', function($scope, $http) {
     };
 });
 
-app.controller('FilterCtrl', [ '$scope', 'WordsFilterService', 'ngDialog',
-    function($scope, WordsFilterService, ngDialog) {
+app.controller('FilterCtrl', [ '$scope', '$location', 'WordsFilterService', 'ngDialog',
+    function($scope, $location, WordsFilterService, ngDialog) {
         $scope.startFiltering = function() {
             var fileName = $scope.metadata.uuid;
             var user = $scope.metadata.personName;
             var url = "/words/startFiltering";
             WordsFilterService.startFilterProcess(fileName, user, url);
+            //$location.path('word-filter.html');
             ngDialog.open({template: 'word-filter.html'});
         };
         $scope.filterOut = function() {
@@ -115,6 +142,18 @@ app.controller('FilterCtrl', [ '$scope', 'WordsFilterService', 'ngDialog',
             var pageNumber = $scope.page.pageNumber;
             var word = $scope.word;
             WordsFilterService.filterOut(fileName, pageNumber, word, url);
+            $scope.$apply();
+        };
+        $scope.nextPage = function() {
+                    var url = "/words/nextPage";
+                    var fileName = $scope.page.fileUUID;
+                    var pageNumber = $scope.page.pageNumber;
+                    WordsFilterService.nextPage(fileName, pageNumber, url);
+                    $scope.$apply();
+                };
+        $scope.finishFiltering = function() {
+                    var url = "/words/finishFiltering";
+                    WordsFilterService.finishFiltering(url);
         };
 
     } ]);

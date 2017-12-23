@@ -1,7 +1,7 @@
 <html ng-app="archive">
 <head>
     <meta charset="utf8" />
-    <title>Document Archive</title>
+    <title>Filter Out</title>
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
@@ -11,7 +11,7 @@
         <h1>Filter Out Already Known Words</h1>
     </div>
     <div id="main" ng-controller="ArchiveCtrl">
-        <h2>File : {{page.fileName}}  Page : {{page.pageNumber}}</h2>
+        <h2>File : {{page.fileName}}  Page  : {{page.pageNumber}}</h2>
         <table id="table-6">
             <thead>
             <tr>
@@ -25,6 +25,26 @@
                 <td><button ng-click="filterOut()">FILTER OUT</button></td>
             </tr>
             </tbody>
+        </table>
+    </div>
+    <div id="sidebar" ng-controller="FilterCtrl">
+        <h2>Control Filtering</h2>
+        <table class="table">
+            <tr>
+                <td><button ng-click="finishFiltering()">I am Done</button></td>
+            </tr>
+            <tr>
+                <td><button ng-click="restart()">Start Again (Not Implemented)</button></td>
+            </tr>
+            <tr>
+                <td><button ng-click="nextPage()">Go To Next Page</button></td>
+            </tr>
+            <tr>
+                <td><input type="number" ng-model="pageNumber"></td>
+            </tr>
+            <tr>
+                <td><button ng-click="goToPage()">Go To Page (Not Implemented)</button></td>
+            </tr>
         </table>
     </div>
     <div id="footer">

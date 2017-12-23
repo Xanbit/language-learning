@@ -63,11 +63,8 @@ h1 {
 #main {
     float: left;
     width: 478px;
-    height: 400px;
     padding: 10px;
     background: #ffffff;
-    border-left: solid 1px #e3e2e2;
-    border-right: solid 1px #e3e2e2;
 }
 
 h2 {

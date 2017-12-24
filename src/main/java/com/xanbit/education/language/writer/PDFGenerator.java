@@ -46,6 +46,7 @@ public class PDFGenerator {
                 document.add( Chunk.NEWLINE );
             }catch (Exception e){
                 System.out.println("Problem adding the word to pdf : "+word+"  : "+e.getMessage());
+                e.printStackTrace();
             }
 
         }

@@ -148,7 +148,7 @@ public class Word {
 
 		return examples
 				.stream()
-				.map(ex -> ex.getValue()+" : "+ex.getTranslation().getValue())
+				.map(ex -> ex.getValue()+ (ex.getTranslation() != null ? " : "+ex.getTranslation().getValue() : ""))
 				.collect(Collectors.toSet());
 
 	}

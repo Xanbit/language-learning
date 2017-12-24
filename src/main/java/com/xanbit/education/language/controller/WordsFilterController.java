@@ -41,9 +41,13 @@ public class WordsFilterController {
     @Autowired
     private PDFGenerator pdfGenerator;
 
+    @Autowired
+    IArchiveService archiveService;
+
     // TODO: 2017-12-23 scope limited to single threaded usage
+    private String CURRENT_USER;
     private LinkedList<ExtractedPage> pagesBeingProcessed = new LinkedList<>();
-    private Set<String> userFilteredWords = new HashSet<>();
+    private Set<String> userWordBank ;
     private static final String OUTPUT_DIR = "generated";
 
     @RequestMapping(value = "/startFiltering", method = RequestMethod.GET)
@@ -51,7 +55,13 @@ public class WordsFilterController {
             @RequestParam(value="fileName", required=true) String documentUUID,
             @RequestParam(value="user", required=true) String user) throws IOException {
 
-        ExtractedPage page = pdfExtractor.extractWordsFromStoredDocument(documentUUID, lastProcessedPage(documentUUID, user));
+        CURRENT_USER = user;
+
+        ExtractedPage page = pdfExtractor.extractWordsFromStoredDocument(documentUUID, lastProcessedPage(documentUUID, CURRENT_USER));
+
+        userWordBank = getUserWordBank(user);
+
+        page.setAllWords(page.getAllWords().stream().filter(word -> ! userWordBank.contains(word)).collect(Collectors.toSet()));
 
         pagesBeingProcessed.add(page);
 
@@ -75,7 +85,10 @@ public class WordsFilterController {
 
         pagesBeingProcessed.getLast().getAllWords().remove(word);
 
+        addToUserWordBank(word);
+
         System.out.println("Word filtered : "+word);
+
         return new ResponseEntity<ExtractedPage>(pagesBeingProcessed.getLast(), new HttpHeaders(), HttpStatus.OK);
     }
 
@@ -85,7 +98,10 @@ public class WordsFilterController {
             @RequestParam(value="pageNumber", required=true) Integer pageNumber) throws IOException {
 
         ExtractedPage nextPage = pdfExtractor.extractWordsFromStoredDocument(documentUUID, pagesBeingProcessed.getLast().getPageNumber()+1);
+
         pagesBeingProcessed.add(nextPage);
+
+        nextPage.setAllWords(nextPage.getAllWords().stream().filter(word -> ! userWordBank.contains(word)).collect(Collectors.toSet()));
 
         ExtractedPage wrapperPage;
 
@@ -115,6 +131,7 @@ public class WordsFilterController {
         pdfGenerator.generate(lookedUpWords, missingWordsFromDictionary, outputFile);
 
         File generatedPDF = new File(outputFile);
+
         byte[] generatedPDFArray = new byte[(int)generatedPDF.length()];
 
         new FileInputStream(generatedPDF).read(generatedPDFArray);
@@ -135,6 +152,17 @@ public class WordsFilterController {
     private int lastProcessedPage(String documentUUID, String user) {
         // TODO: 2017-12-22 implement this
         return 1;
+    }
+
+
+    private void addToUserWordBank(String word) {
+        userWordBank.add(word);
+        //save user word bank
+        archiveService.saveUserWordBank(CURRENT_USER, userWordBank);
+    }
+
+    private Set<String> getUserWordBank(String user) {
+        return archiveService.getUserWordBank(CURRENT_USER);
     }
 
     private void createDirectory(String path) {

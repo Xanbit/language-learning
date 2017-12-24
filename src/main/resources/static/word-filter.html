@@ -22,7 +22,7 @@
             <tbody>
             <tr ng-repeat="word in page.allWords" ng-controller="FilterCtrl">
                 <td ng-model="word">{{word}}</a></td>
-                <td><button ng-click="filterOut()">FILTER OUT</button></td>
+                <td><button ng-click="filterOut()">I KNOW THIS WORD</button></td>
             </tr>
             </tbody>
         </table>
@@ -31,7 +31,7 @@
         <h2>Control Filtering</h2>
         <table class="table">
             <tr>
-                <td><button ng-click="finishFiltering()">I am Done</button></td>
+                <td><button ng-click="finishFiltering()">Finish Filtering</button></td>
             </tr>
             <tr>
                 <td><button ng-click="restart()">Start Again (Not Implemented)</button></td>

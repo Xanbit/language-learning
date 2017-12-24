@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -85,7 +82,9 @@ public class PDFExtractor {
 				.filter(word -> ! word.matches("\\w*\\d\\w*"))
 				.collect(Collectors.toSet());
 
-		return filteredWords;
+		// TODO: 2017-12-24 fix an empty string being collected
+
+		return filteredWords.stream().filter(word -> ! word.isEmpty()).collect(Collectors.toSet());
 	}
 	
 }

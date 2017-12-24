@@ -18,7 +18,7 @@ app.directive('fileModel', [ '$parse', function($parse) {
 
 app.service('ArchiveService', [ '$http', '$rootScope', function($http, $rootScope) {
     this.search = function(name, date) {
-        $http.get("http://xanbit.se:9000/archive/documents", {
+        $http.get("http://localhost:9000/archive/documents", {
             params : {
                 person : name,
                 date : date
@@ -115,7 +115,7 @@ app.controller('UploadCtrl', [ '$scope', 'fileUpload',
 
 app.controller('ArchiveCtrl', function($scope, $http) {
     $scope.search = function(name, date) {
-        $http.get("http://xanbit.se:9000/archive/documents", {
+        $http.get("http://localhost:9000/archive/documents", {
             params : {
                 person : name,
                 date : date
@@ -159,7 +159,7 @@ app.controller('FilterCtrl', [ '$scope', '$location', 'WordsFilterService', 'ngD
     } ]);
 
 app.run(function($rootScope, $http) {
-    $http.get("http://xanbit.se:9000/archive/documents").success(
+    $http.get("http://localhost:9000/archive/documents").success(
         function(response) {
             $rootScope.metadataList = response;
         });

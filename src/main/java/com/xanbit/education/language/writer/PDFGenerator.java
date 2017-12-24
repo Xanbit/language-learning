@@ -8,6 +8,7 @@ import com.xanbit.education.language.exception.PDFGenerationException;
 import com.xanbit.education.language.swedish.dictionary.xml.model.Word;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.List;
@@ -19,6 +20,8 @@ public class PDFGenerator {
     public void generate(List<Word> lookedUpWords, Set<String> notKnownWords, String dest) throws PDFGenerationException, FileNotFoundException {
 
         Document document = new Document(PageSize.A4);
+
+        createDirectory(dest);
 
         try {
             PdfWriter.getInstance(document, new FileOutputStream(dest));
@@ -102,5 +105,10 @@ public class PDFGenerator {
         cell = new PdfPCell();
         cell.setColspan(14);
         outerTable.addCell(cell);
+    }
+
+    private void createDirectory(String path) {
+        File file = new File(path);
+        file.mkdirs();
     }
 }

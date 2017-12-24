@@ -44,7 +44,7 @@ public class WordsFilterController {
     // TODO: 2017-12-23 scope limited to single threaded usage
     private LinkedList<ExtractedPage> pagesBeingProcessed = new LinkedList<>();
     private Set<String> userFilteredWords = new HashSet<>();
-    private static final String OUTPUT_DIR = "/Users/markiv/";
+    private static final String OUTPUT_DIR = "generated";
 
     @RequestMapping(value = "/startFiltering", method = RequestMethod.GET)
     public HttpEntity<ExtractedPage> startFiltering(

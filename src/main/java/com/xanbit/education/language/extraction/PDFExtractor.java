@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,8 +31,7 @@ public class PDFExtractor {
 		for(int i=0;i<reader.getNumberOfPages();i++) {
 			String text = PdfTextExtractor.getTextFromPage(reader, (i+1));
             //String[] words = text.replaceAll("^[.,\\s]+", "").split("[.,\\s]+");
-			String[] words = text.split("\\W");
-            Set<String> distinctWords = Arrays.asList(words).stream().filter(str -> !str.isEmpty()).collect(Collectors.toSet());
+			Set<String> distinctWords = findDistinctWordsInText(text);
             extractedPages.add(new ExtractedPage(pdfPath, pdfPath, text, distinctWords, i+1));
         }
 		
@@ -45,8 +45,9 @@ public class PDFExtractor {
 		PdfReader reader = new PdfReader(doc.getFileData());
 
 		String text = PdfTextExtractor.getTextFromPage(reader, pageNumber);
-		String[] words = text.split("\\W");
-		Set<String> distinctWords = Arrays.asList(words).stream().filter(str -> !str.isEmpty()).collect(Collectors.toSet());
+
+		Set<String> distinctWords = findDistinctWordsInText(text);
+
 		return new ExtractedPage(doc.getUuid(), doc.getFileName(), text, distinctWords, pageNumber);
 	}
 
@@ -61,12 +62,30 @@ public class PDFExtractor {
 		for(int i=0;i<reader.getNumberOfPages();i++) {
 			String text = PdfTextExtractor.getTextFromPage(reader, (i+1));
 			//String[] words = text.replaceAll("^[.,\\s]+", "").split("[.,\\s]+");
-			String[] words = text.split("\\W");
-			Set<String> distinctWords = Arrays.asList(words).stream().filter(str -> !str.isEmpty()).collect(Collectors.toSet());
+			Set<String> distinctWords = findDistinctWordsInText(text);
 			extractedPages.add(new ExtractedPage(doc.getUuid(), doc.getFileName(), text, distinctWords, i+1));
 		}
 
 		return extractedPages;
+	}
+
+	public static Set<String> findDistinctWordsInText(String text) {
+
+		String[] words = text
+				.toLowerCase()
+				.replace(".", "")
+				.replace(",", " ")
+				.replace("\n", " ")
+				.split(" ");
+
+		//filter words that contains numbers
+
+		Set<String> filteredWords = Arrays.asList(words)
+				.stream()
+				.filter(word -> ! word.matches("\\w*\\d\\w*"))
+				.collect(Collectors.toSet());
+
+		return filteredWords;
 	}
 	
 }

@@ -55,7 +55,16 @@ public class WordsFilterController {
 
         pagesBeingProcessed.add(page);
 
-        return new ResponseEntity<ExtractedPage>(page, new HttpHeaders(),HttpStatus.OK);
+        ExtractedPage wrapperPage;
+
+        if (page.getAllWords().isEmpty()){
+            wrapperPage = new ExtractedPage(page.getFileUUID(), page.getFileName(), page.getRawText(), page.getAllWords(), page.getPageNumber());
+            wrapperPage.getAllWords().add("No Words in Page; Go To Next");
+        }else {
+            wrapperPage = page;
+        }
+
+        return new ResponseEntity<ExtractedPage>(wrapperPage, new HttpHeaders(),HttpStatus.OK);
     }
 
     @RequestMapping(value = "/filterOut", method = RequestMethod.GET)
@@ -78,7 +87,16 @@ public class WordsFilterController {
         ExtractedPage nextPage = pdfExtractor.extractWordsFromStoredDocument(documentUUID, pagesBeingProcessed.getLast().getPageNumber()+1);
         pagesBeingProcessed.add(nextPage);
 
-        return new ResponseEntity<ExtractedPage>(nextPage, new HttpHeaders(), HttpStatus.OK);
+        ExtractedPage wrapperPage;
+
+        if (nextPage.getAllWords().isEmpty()){
+            wrapperPage = new ExtractedPage(nextPage.getFileUUID(), nextPage.getFileName(), nextPage.getRawText(), nextPage.getAllWords(), nextPage.getPageNumber());
+            wrapperPage.getAllWords().add("No Words in Page; Go To Next");
+        }else {
+            wrapperPage = nextPage;
+        }
+
+        return new ResponseEntity<ExtractedPage>(wrapperPage, new HttpHeaders(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/finishFiltering", method = RequestMethod.GET)

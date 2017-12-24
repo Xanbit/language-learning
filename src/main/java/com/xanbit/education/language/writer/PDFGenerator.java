@@ -21,8 +21,6 @@ public class PDFGenerator {
 
         Document document = new Document(PageSize.A4);
 
-        createDirectory(dest);
-
         try {
             PdfWriter.getInstance(document, new FileOutputStream(dest));
 

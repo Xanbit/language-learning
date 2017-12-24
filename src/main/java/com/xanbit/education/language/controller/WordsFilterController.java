@@ -90,7 +90,9 @@ public class WordsFilterController {
 
         wordLookupService.lookupWords(collectWordsToLookup(), lookedUpWords, missingWordsFromDictionary);
 
-        String outputFile = OUTPUT_DIR+pagesBeingProcessed.getLast().getFileName()+"-"+pagesBeingProcessed.getLast().getPageNumber()+".pdf";
+        createDirectory(OUTPUT_DIR);
+
+        String outputFile = OUTPUT_DIR+"/"+pagesBeingProcessed.getLast().getFileName()+"-"+pagesBeingProcessed.getLast().getPageNumber()+".pdf";
 
         pdfGenerator.generate(lookedUpWords, missingWordsFromDictionary, outputFile);
 
@@ -115,6 +117,11 @@ public class WordsFilterController {
     private int lastProcessedPage(String documentUUID, String user) {
         // TODO: 2017-12-22 implement this
         return 1;
+    }
+
+    private void createDirectory(String path) {
+        File file = new File(path);
+        file.mkdirs();
     }
 
 }

@@ -57,6 +57,8 @@ public class WordsFilterController {
 
         CURRENT_USER = user;
 
+        System.out.println(documentUUID);
+
         ExtractedPage page = pdfExtractor.extractWordsFromStoredDocument(documentUUID, lastProcessedPage(documentUUID, CURRENT_USER));
 
         userWordBank = getUserWordBank(user);
@@ -86,8 +88,6 @@ public class WordsFilterController {
         pagesBeingProcessed.getLast().getAllWords().remove(word);
 
         addToUserWordBank(word);
-
-        System.out.println("Word filtered : "+word);
 
         return new ResponseEntity<ExtractedPage>(pagesBeingProcessed.getLast(), new HttpHeaders(), HttpStatus.OK);
     }

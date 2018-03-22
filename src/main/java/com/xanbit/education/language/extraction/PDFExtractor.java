@@ -19,6 +19,10 @@ public class PDFExtractor {
 	@Autowired
 	private ArchiveService archiveService;
 
+    @Autowired
+    private EpubExtractor epubExtractor;
+
+
 	public List<ExtractedPage> extractWords(String pdfPath) throws IOException{
 
 		List<ExtractedPage> extractedPages = new ArrayList<>();
@@ -38,6 +42,9 @@ public class PDFExtractor {
 	public ExtractedPage extractWordsFromStoredDocument(String uuid, int pageNumber) throws IOException{
 
 		Document doc =  archiveService.getDocumentDao().load(uuid);
+
+        if (doc.getFileName().endsWith(".epub"))
+            return epubExtractor.extractWordsFromStoredDocument(uuid, pageNumber);
 
 		PdfReader reader = new PdfReader(doc.getFileData());
 

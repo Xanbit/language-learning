@@ -48,6 +48,9 @@ public class PDFExtractor {
 
 		PdfReader reader = new PdfReader(doc.getFileData());
 
+        if (pageNumber > reader.getNumberOfPages())
+            return new ExtractedPage(doc.getUuid(), doc.getFileName(), "", Collections.emptySet(), pageNumber);
+
 		String text = PdfTextExtractor.getTextFromPage(reader, pageNumber);
 
 		Set<String> distinctWords = findDistinctWordsInText(text);

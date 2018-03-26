@@ -18,6 +18,7 @@ public class FileSystemDocumentDao implements IDocumentDao {
     private static final Logger LOG = Logger.getLogger(FileSystemDocumentDao.class);
     
     public static final String DIRECTORY = "archive";
+    public static final String WORD_BANK_STORE_FILE_SUFFIX = "words.wb";
     public static final String META_DATA_FILE_NAME = "metadata.properties";
     
     @PostConstruct
@@ -59,6 +60,30 @@ public class FileSystemDocumentDao implements IDocumentDao {
             throw new RuntimeException(message, e);
         }
         
+    }
+
+    @Override
+    public Map<Integer, Set<String>> getDocumentWords(String documentUUID) {
+        try {
+            return loadDocumentWordsFromFileSystem(documentUUID);
+        } catch (IOException | ClassNotFoundException e) {
+            String message = "Error while loading document words : " + documentUUID;
+            LOG.error(message, e);
+            throw new RuntimeException(message, e);
+        }
+    }
+
+    @Override
+    public void saveDocumentWords(String documentUUID, Map<Integer, Set<String>> allWords) {
+        try {
+            ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(new File(new File(getDirectoryPath(documentUUID)), documentUUID+WORD_BANK_STORE_FILE_SUFFIX)));
+            stream.writeObject(allWords);
+            stream.close();
+        } catch (IOException e) {
+            String message = "Error while inserting document";
+            LOG.error(message, e);
+            throw new RuntimeException(message, e);
+        }
     }
 
     private List<DocumentMetadata> findInFileSystem(String personName, Date date) throws IOException  {
@@ -108,6 +133,20 @@ public class FileSystemDocumentDao implements IDocumentDao {
        Document document = new Document(metadata);
        document.setFileData(Files.readAllBytes(path));
        return document;
+    }
+
+    private Map<Integer, Set<String>> loadDocumentWordsFromFileSystem(String documentUUID) throws IOException, ClassNotFoundException {
+        Path path = Paths.get(getDirectoryPath(documentUUID)+File.separator+documentUUID+WORD_BANK_STORE_FILE_SUFFIX);
+        if ( ! path.toFile().exists()) {
+            saveDocumentWords(documentUUID, new HashMap<>());
+            return new HashMap<>();
+        }
+
+        ObjectInputStream stream = new ObjectInputStream(new FileInputStream(path.toFile()));
+
+        Map<Integer, Set<String>> result = (Map<Integer, Set<String>>)stream.readObject();
+
+        return result;
     }
 
     private String getFilePath(DocumentMetadata metadata) {

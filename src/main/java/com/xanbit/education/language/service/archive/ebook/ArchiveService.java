@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @Service("archiveService")
@@ -19,10 +20,10 @@ public class ArchiveService implements IArchiveService, Serializable {
     private static final long serialVersionUID = 8119784722798361327L;
     
     @Autowired
-    private IDocumentDao DocumentDao;
+    private IDocumentDao documentDao;
 
     @Autowired
-    private IUserDao UserDao;
+    private IUserDao userDao;
 
     @Override
     public DocumentMetadata save(Document document) {
@@ -47,20 +48,30 @@ public class ArchiveService implements IArchiveService, Serializable {
 
     @Override
     public void saveUserWordBank(String current_user, Set<String> userWordBank) {
-        UserDao.saveUserWordBank(current_user, userWordBank);
+        userDao.saveUserWordBank(current_user, userWordBank);
     }
 
     @Override
     public Set<String> getUserWordBank(String current_user) {
-        return UserDao.getUserWordBank(current_user);
+        return userDao.getUserWordBank(current_user);
+    }
+
+    @Override
+    public void saveDocumentWords(String documentUUID, Map<Integer, Set<String>> words) {
+        documentDao.saveDocumentWords(documentUUID, words);
+    }
+
+    @Override
+    public Map<Integer, Set<String>> getDocumentWords(String documentUUID) {
+        return documentDao.getDocumentWords(documentUUID);
     }
 
     public IDocumentDao getDocumentDao() {
-        return DocumentDao;
+        return documentDao;
     }
 
     public void setDocumentDao(IDocumentDao documentDao) {
-        DocumentDao = documentDao;
+        this.documentDao = documentDao;
     }
 
 

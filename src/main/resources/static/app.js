@@ -48,6 +48,25 @@ app.service('WordsFilterService', [ '$http', '$rootScope', function($http, $root
         }).error(function() {
         });
     }
+    this.flashCards = function(fileName, user, url) {
+                $http.get(url, {
+                    params : {
+                                        fileName : fileName,
+                                        user : user
+                                    },
+                    responseType:'arraybuffer'
+                }).success(function(response) {
+                    $rootScope.generatedPDF = response;
+                    console.log('generated binary data is ' + response);
+                    var blob = new Blob([response], { type: 'application/pdf' });
+                    console.log('generated data is ' + blob);
+                    var downloadLink = angular.element('<a></a>');
+                    downloadLink.attr('href',window.URL.createObjectURL(blob));
+                    downloadLink.attr('download', 'generated.pdf');
+                    			downloadLink[0].click();
+                }).error(function() {
+                });
+            }
     this.filterOut = function(fileName, pageNumber, word, url) {
         $http.get(url, {
             params : {
@@ -142,6 +161,14 @@ app.controller('FilterCtrl', [ '$scope', '$location', 'WordsFilterService', 'ngD
             //$location.path('word-filter.html');
             ngDialog.open({template: 'word-filter.html'});
         };
+        $scope.flashCards = function() {
+                    var fileName = $scope.metadata.uuid;
+                    var user = $scope.metadata.personName;
+                    var url = "/flashcards/document";
+                    WordsFilterService.flashCards(fileName, user, url);
+                    //$location.path('word-filter.html');
+                    ngDialog.open({template: 'word-filter.html'});
+                };
         $scope.filterOut = function() {
             var url = "/words/filterOut";
             var fileName = $scope.page.fileUUID;

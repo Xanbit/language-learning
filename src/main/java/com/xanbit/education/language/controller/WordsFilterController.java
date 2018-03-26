@@ -59,6 +59,12 @@ public class WordsFilterController {
 
         System.out.println(documentUUID);
 
+        //save extracted words
+        Map<Integer, Set<String>> allWords = pdfExtractor.extractWordsFromStoredDocument(documentUUID)
+                .stream().collect(Collectors.toMap(page -> page.getPageNumber(), page -> page.getAllWords()));
+
+        saveDocumentWords(documentUUID, allWords);
+
         ExtractedPage page = pdfExtractor.extractWordsFromStoredDocument(documentUUID, lastProcessedPage(documentUUID, CURRENT_USER));
 
         userWordBank = getUserWordBank(user);
@@ -163,6 +169,10 @@ public class WordsFilterController {
 
     private Set<String> getUserWordBank(String user) {
         return archiveService.getUserWordBank(CURRENT_USER);
+    }
+
+    private void saveDocumentWords(String documentUUID, Map<Integer, Set<String>> allWords) {
+        archiveService.saveDocumentWords(documentUUID, allWords);
     }
 
     private void createDirectory(String path) {

@@ -51,15 +51,19 @@ public class EpubExtractor {
         Document doc =  archiveService.getDocumentDao().load(uuid);
 
         EpubReader epubReader = new EpubReader();
+
         Book book = epubReader.readEpub(new ByteArrayInputStream(doc.getFileData()));
 
+        if (pageNumber > book.getContents().size())
+            return new ExtractedPage(doc.getUuid(), doc.getFileName(), "", Collections.emptySet(), pageNumber);
 
-            BufferedReader br = new BufferedReader(book.getContents().get(pageNumber).getReader());
+        BufferedReader br = new BufferedReader(book.getContents().get(pageNumber).getReader());
 
-            Set<String> distinctWords = new HashSet<>();
+        Set<String> distinctWords = new HashSet<>();
 
-            br.lines().forEach(l -> distinctWords.addAll(findDistinctWordsInText(l)));
-            return new ExtractedPage(doc.getUuid(), doc.getFileName(), "", distinctWords, pageNumber);
+        br.lines().forEach(l -> distinctWords.addAll(findDistinctWordsInText(l)));
+
+        return new ExtractedPage(doc.getUuid(), doc.getFileName(), "", distinctWords, pageNumber);
     }
 
 	public static Set<String> findDistinctWordsInText(String text) {

@@ -5,6 +5,7 @@ import com.xanbit.education.language.model.archive.DocumentMetadata;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public interface IArchiveService {
@@ -18,4 +19,8 @@ public interface IArchiveService {
     void saveUserWordBank(String current_user, Set<String> userWordBank);
 
     Set<String> getUserWordBank(String current_user);
+
+    void saveDocumentWords(String documentUUID, Map<Integer, Set<String>> allWords);
+
+    Map<Integer, Set<String>> getDocumentWords(String documentUUID);
 }

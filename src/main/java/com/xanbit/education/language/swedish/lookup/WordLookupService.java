@@ -19,7 +19,6 @@ public class WordLookupService {
     private static SvEnDictionaryKTH dictionary = loadXMLDictionary();
 
 	public void lookupWords(Set<String> notKnownWords, List<Word> lookedUpWords, Set<String> unfoundWords) {
-    	
     	for (String s : notKnownWords) {
 			Word word = lookup(s);
 			if (word != null) {
@@ -32,7 +31,7 @@ public class WordLookupService {
 		System.out.println("Words lookup done. Total looked up words : "+lookedUpWords.size()+" , words not found in dictionary : "+unfoundWords.size());
 	}
     
-    private Word lookup(String wordToLookup){
+    public Word lookup(String wordToLookup){
     	for (Word word : dictionary.getWords()) {
 			if (word.getValue().equalsIgnoreCase(wordToLookup)) {
 				return word;

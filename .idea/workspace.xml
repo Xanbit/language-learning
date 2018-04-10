@@ -2,19 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f3c572a-ca2c-49f2-868e-efeef690ac29" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/controller/FlashcardController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generated/ord-omgiven-av-idioter (1).pdf-13.pdf" afterPath="$PROJECT_DIR$/generated/ord-omgiven-av-idioter (1).pdf-13.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/service/archive/ebook/ArchiveService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/service/archive/ebook/ArchiveService.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive-user/markiv/wordbank.wb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive-user/vikku/wordbank.wb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive-user/vikram/wordbank.wb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/1995d18e-2940-4c4a-812c-5740b9754290/1995d18e-2940-4c4a-812c-5740b9754290words.wb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/1995d18e-2940-4c4a-812c-5740b9754290/TSP-1745_7-1701_Nummertjanster_sv.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/1995d18e-2940-4c4a-812c-5740b9754290/metadata.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/42d40b43-02ef-440a-a07d-4bd2f61802b6/07.Form i fokus A  (1).pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/42d40b43-02ef-440a-a07d-4bd2f61802b6/metadata.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/486ab648-546b-4919-a925-44cf6d85da6c/486ab648-546b-4919-a925-44cf6d85da6cwords.wb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/486ab648-546b-4919-a925-44cf6d85da6c/metadata.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/486ab648-546b-4919-a925-44cf6d85da6c/ord-omgiven-av-idioter.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/7140d0ff-a48b-4112-8d10-b9d15e9063d6/7140d0ff-a48b-4112-8d10-b9d15e9063d6words.wb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/7140d0ff-a48b-4112-8d10-b9d15e9063d6/metadata.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/7140d0ff-a48b-4112-8d10-b9d15e9063d6/svenska-ord-manuell (1).pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/9f00cc22-15c3-416a-b1c6-5ea6418cba9e/9f00cc22-15c3-416a-b1c6-5ea6418cba9ewords.wb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/9f00cc22-15c3-416a-b1c6-5ea6418cba9e/metadata.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/9f00cc22-15c3-416a-b1c6-5ea6418cba9e/ord-omgiven-av-idioter (1).pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/c0499c2f-ce00-4371-a503-b72f0cc8326c/Mahesh_Manuja_CV.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/c0499c2f-ce00-4371-a503-b72f0cc8326c/c0499c2f-ce00-4371-a503-b72f0cc8326cwords.wb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/c0499c2f-ce00-4371-a503-b72f0cc8326c/metadata.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/d4cf2d16-bffa-45f1-ae07-ec841e2a3501/Form i fokus del B2.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/d4cf2d16-bffa-45f1-ae07-ec841e2a3501/metadata.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/f2d059de-5147-4258-8ea4-5c4bfb0346d8/en-man-som-heter-Ove.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/f2d059de-5147-4258-8ea4-5c4bfb0346d8/f2d059de-5147-4258-8ea4-5c4bfb0346d8words.wb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/f2d059de-5147-4258-8ea4-5c4bfb0346d8/metadata.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/f65db181-2a62-4d2b-bacc-f6e3a52c0d10/doktor_glas.epub" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/archive/f65db181-2a62-4d2b-bacc-f6e3a52c0d10/metadata.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/generated/flashcards/markiv/486ab648-546b-4919-a925-44cf6d85da6c.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/generated/flashcards/markiv/7140d0ff-a48b-4112-8d10-b9d15e9063d6.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/generated/flashcards/vikram/f2d059de-5147-4258-8ea4-5c4bfb0346d8.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/generated/ord-omgiven-av-idioter (1).pdf-13.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/generated/ord-omgiven-av-idioter.pdf-13.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/generated/svenska-ord-manuell (1).pdf-1.pdf" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/extraction/EpubExtractor.java" afterPath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/extraction/EpubExtractor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/dao/FileSystemDocumentDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/dao/FileSystemDocumentDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/service/archive/IArchiveService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/service/archive/IArchiveService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/dao/IDocumentDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/dao/IDocumentDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/controller/FlashcardController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/controller/FlashcardController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/extraction/PDFExtractor.java" afterPath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/extraction/PDFExtractor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/writer/PDFGenerator.java" afterPath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/writer/PDFGenerator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/swedish/lookup/WordLookupService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/swedish/lookup/WordLookupService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/swedish/dictionary/xml/model/Word.java" afterPath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/swedish/dictionary/xml/model/Word.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/controller/WordsFilterController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/controller/WordsFilterController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/app.js" afterPath="$PROJECT_DIR$/src/main/resources/static/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" afterPath="$PROJECT_DIR$/src/main/resources/static/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="e1397687-c2de-4001-8563-bbf64b5020b0" name="Not To Be Checked In" comment="" />
@@ -38,50 +64,7 @@
     <favorites_list name="vocab-builder" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="FlashcardController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/controller/FlashcardController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="400" max-vertical-offset="1170">
-              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PDFGenerator.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/writer/PDFGenerator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33261803" vertical-offset="595" max-vertical-offset="3120">
-              <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WordsFilterController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/controller/WordsFilterController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1469" max-vertical-offset="2430">
-              <caret line="130" column="32" selection-start-line="130" selection-start-column="32" selection-end-line="130" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WordLookupService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/swedish/lookup/WordLookupService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
-              <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -139,7 +122,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/model/RestFilterWord.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/controller/EbookTranslationController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/model/ExtractedPage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/swedish/dictionary/xml/model/Word.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/styles/styles.css" />
         <option value="$PROJECT_DIR$/src/test/java/com/xanbit/education/language/extraction/PDFExtractorTest.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/word-filter.html" />
@@ -148,17 +130,18 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/com/xanbit/education/language/extraction/EpubExtractorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/dao/IWordsDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/extraction/PDFExtractor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/extraction/EpubExtractor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/controller/WordsFilterController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/service/archive/IArchiveService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/service/archive/ebook/ArchiveService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/dao/IDocumentDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/dao/FileSystemDocumentDao.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/index.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/controller/FlashcardController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/app.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/swedish/lookup/WordLookupService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/extraction/PDFExtractor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/extraction/EpubExtractor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/controller/WordsFilterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/swedish/dictionary/xml/model/Word.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/controller/FlashcardController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xanbit/education/language/writer/PDFGenerator.java" />
       </list>
     </option>
@@ -274,46 +257,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="generated" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vocab-builder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xanbit-language-learning" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="generated" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="flashcards" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vikram" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vocab-builder" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xanbit-language-learning" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="generated" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="flashcards" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -866,18 +809,18 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42048192" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40481928" sideWeight="0.49722221" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3120482" sideWeight="0.49722221" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37631887" sideWeight="0.50277776" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29583332" sideWeight="0.2274326" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39661428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36123034" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298611" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27539343" sideWeight="0.7725674" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28313252" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3390558" sideWeight="0.7725674" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4192771" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -966,13 +909,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/controller/FlashcardController.java</url>
-          <line>37</line>
+          <line>41</line>
           <properties />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/writer/PDFGenerator.java</url>
-          <line>60</line>
+          <line>62</line>
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
@@ -1170,54 +1113,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/extraction/PDFExtractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="233" max-vertical-offset="1425">
-          <caret line="46" column="59" selection-start-line="46" selection-start-column="59" selection-end-line="46" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/extraction/EpubExtractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="248" max-vertical-offset="1185">
-          <caret line="74" column="28" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/service/archive/IArchiveService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
-          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/service/archive/ebook/ArchiveService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="975">
-          <caret line="65" column="38" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/dao/IDocumentDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
-          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/dao/FileSystemDocumentDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2358" max-vertical-offset="3210">
-          <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/controller/EbookTranslationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18453865" vertical-offset="467" max-vertical-offset="1725">
@@ -1250,29 +1145,85 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/extraction/EpubExtractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="1575">
+          <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/extraction/PDFExtractor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44198895" vertical-offset="495" max-vertical-offset="1470">
+          <caret line="60" column="31" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/controller/WordsFilterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1469" max-vertical-offset="2430">
-          <caret line="130" column="32" selection-start-line="130" selection-start-column="32" selection-end-line="130" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.4383057" vertical-offset="347" max-vertical-offset="2445">
+          <caret line="63" column="82" selection-start-line="63" selection-start-column="82" selection-end-line="63" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/swedish/dictionary/xml/model/Word.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1095" max-vertical-offset="4260">
+          <caret line="122" column="18" selection-start-line="122" selection-start-column="18" selection-end-line="122" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/service/archive/IArchiveService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
+          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/service/archive/ebook/ArchiveService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="521" max-vertical-offset="975">
+          <caret line="65" column="36" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/dao/IDocumentDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
+          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/dao/FileSystemDocumentDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1724" max-vertical-offset="3210">
+          <caret line="137" column="38" selection-start-line="137" selection-start-column="38" selection-end-line="137" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/writer/PDFGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5638766" vertical-offset="809" max-vertical-offset="3870">
+          <caret line="88" column="40" selection-start-line="88" selection-start-column="40" selection-end-line="88" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/controller/FlashcardController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="400" max-vertical-offset="1170">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.52863437" vertical-offset="600" max-vertical-offset="1275">
+          <caret line="56" column="33" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xanbit/education/language/writer/PDFGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33261803" vertical-offset="595" max-vertical-offset="3120">
-          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>

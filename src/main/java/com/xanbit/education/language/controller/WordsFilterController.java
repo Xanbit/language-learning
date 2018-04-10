@@ -59,6 +59,7 @@ public class WordsFilterController {
 
         System.out.println(documentUUID);
 
+
         //save extracted words
         Map<Integer, Set<String>> allWords = pdfExtractor.extractWordsFromStoredDocument(documentUUID)
                 .stream().collect(Collectors.toMap(page -> page.getPageNumber(), page -> page.getAllWords()));

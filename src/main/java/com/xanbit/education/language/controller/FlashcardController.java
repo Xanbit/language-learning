@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -30,6 +32,8 @@ public class FlashcardController {
 
     private static final String OUTPUT_DIR = "generated/flashcards";
 
+    private static final List<String> wordstoBeFiltered = Arrays.asList("div", "img", "cover", "jpg", "images", "src", "alt", "height");
+
     @RequestMapping(value = "/document", method = RequestMethod.GET)
     public HttpEntity<byte[]> printFlashcards(
             @RequestParam(value="fileName", required=true) String documentUUID,
@@ -41,6 +45,9 @@ public class FlashcardController {
 
         //remove user known words
         wordsByPage.entrySet().forEach(e -> e.getValue().removeAll(userKnownWords));
+
+        //remove unwanted words
+        wordsByPage.entrySet().forEach(e -> e.getValue().removeAll(wordstoBeFiltered));
 
         //generate pdf
         createDirectory(OUTPUT_DIR+"/"+user);

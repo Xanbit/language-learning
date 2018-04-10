@@ -64,6 +64,9 @@ public class PDFExtractor {
 
 		Document doc =  archiveService.getDocumentDao().load(uuid);
 
+        if (doc.getFileName().endsWith(".epub"))
+            return epubExtractor.extractWordsFromStoredDocument(uuid);
+
 		PdfReader reader = new PdfReader(doc.getFileData());
 
 		for(int i=0;i<reader.getNumberOfPages();i++) {

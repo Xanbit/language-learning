@@ -120,6 +120,14 @@ public class Word {
 		return inflections;
 	}
 
+    public String getInflectionsString(){
+        StringBuilder builder = new StringBuilder();
+
+        getParadigmInflections().stream().forEach(str -> builder.append(str + " ,"));
+
+        return builder.toString();
+    }
+
 	public String getTranslationsString() {
 
 		StringBuilder builder = new StringBuilder();

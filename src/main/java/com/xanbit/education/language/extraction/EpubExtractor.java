@@ -46,6 +46,32 @@ public class EpubExtractor {
         return extractedPages;
 	}
 
+    public List<ExtractedPage> extractWordsFromStoredDocument(String uuid) throws IOException{
+
+        Document doc =  archiveService.getDocumentDao().load(uuid);
+
+        EpubReader epubReader = new EpubReader();
+
+        Book book = epubReader.readEpub(new ByteArrayInputStream(doc.getFileData()));
+
+        List<ExtractedPage> allPages = new ArrayList<>();
+
+        for (int i = 0; i< book.getContents().size(); i++){
+
+            BufferedReader br = new BufferedReader(book.getContents().get(i).getReader());
+
+            Set<String> distinctWords = new HashSet<>();
+
+            br.lines().forEach(l -> distinctWords.addAll(findDistinctWordsInText(l)));
+
+            ExtractedPage page = new ExtractedPage(doc.getUuid(), doc.getFileName(), "", distinctWords, i);
+
+            allPages.add(page);
+        }
+
+        return allPages;
+    }
+
     public ExtractedPage extractWordsFromStoredDocument(String uuid, int pageNumber) throws IOException{
 
         Document doc =  archiveService.getDocumentDao().load(uuid);

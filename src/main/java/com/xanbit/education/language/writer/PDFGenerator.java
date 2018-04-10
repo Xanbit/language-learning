@@ -11,6 +11,7 @@ import com.xanbit.education.language.swedish.lookup.WordLookupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.stream.events.Characters;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -48,6 +49,7 @@ public class PDFGenerator {
 
     public void generateFlashcards(Map<Integer, Set<String>> wordsByPage, String dest) throws FileNotFoundException, PDFGenerationException {
         Document document = new Document(PageSize.A4);
+        document.setMargins(4f, 4f, 4f, 4f);
 
         try {
             PdfWriter.getInstance(document, new FileOutputStream(dest));
@@ -86,23 +88,19 @@ public class PDFGenerator {
 
         for (int i = 0; i < pdfPageCount; i++) {
 
-            Paragraph paragraph = new Paragraph("Page : "+pageNumber);
-            paragraph.setAlignment(Element.ALIGN_CENTER);
-            document.add(paragraph);
-            document.add(Chunk.NEWLINE);
-
             //2X4 table
             PdfPTable pdfPTable = new PdfPTable(2);
-            pdfPTable.setTotalWidth(580F);
-            pdfPTable.setWidths(new float[]{280F, 280F});
+            pdfPTable.setWidthPercentage(99.0f);
 
             List<String> wordsForCurrentPage = new ArrayList<>();
             for (int j = 0; j< 8; j++){
                 if (wordsIterator.hasNext()){
                     String w = wordsIterator.next();
-                    Phrase phrase = new Phrase(w);
+                    Font wordFont = new Font(Font.FontFamily.TIMES_ROMAN);
+                    wordFont.setSize(30f);
+                    Phrase phrase = new Phrase(w, wordFont);
                     PdfPCell cell = new PdfPCell(phrase);
-                    cell.setFixedHeight(150F);
+                    cell.setFixedHeight(207F);
                     cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
                     cell.setHorizontalAlignment(Element.ALIGN_CENTER);
                     cell.setBorder(Rectangle.BOX);
@@ -110,6 +108,7 @@ public class PDFGenerator {
                     cell.setPaddingRight(20F);
                     cell.setPaddingTop(20F);
                     cell.setPaddingBottom(20F);
+                    cell.setBorderWidth(15f);
                     pdfPTable.addCell(cell);
                     wordsForCurrentPage.add(w);
                 }
@@ -129,20 +128,72 @@ public class PDFGenerator {
 
         //2X4 table
         PdfPTable pdfPTable = new PdfPTable(2);
-        pdfPTable.setTotalWidth(580F);
-        pdfPTable.setWidths(new float[]{280F, 280F});
+        pdfPTable.setWidthPercentage(100f);
+        List<PdfPCell> eightCellls = new ArrayList<>();
 
-        for (String w : wordsForCurrentPage){
-            Word lookedUpWord = lookupService.lookup(w);
-            String wordHint = lookedUpWord != null ? lookedUpWord.getTranslationsString().replaceAll("\\s*,\\s*$", "") : w;
-            Phrase phrase = new Phrase(wordHint);
-            PdfPCell cell = new PdfPCell(phrase);
-            cell.setFixedHeight(150F);
+        for (int i = 0; i < 8; i++){
+            Word lookedUpWord = wordsForCurrentPage.size() > i ? lookupService.lookup(wordsForCurrentPage.get(i)) : null;
+            PdfPCell cell = lookedUpWord == null ? new PdfPCell(new Phrase("")) : getWordHints(lookedUpWord);
+            cell.setFixedHeight(207F);
             cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
             cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setBorderWidth(15f);
+            eightCellls.add(cell);
+        }
+        /*
+        for (String w : wordsForCurrentPage){
+            Word lookedUpWord = lookupService.lookup(w);
+            PdfPCell cell = lookedUpWord == null ? new PdfPCell(new Phrase("")) : getWordHints(lookedUpWord);
+            cell.setFixedHeight(207F);
+            cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell.setBorderWidth(15f);
             pdfPTable.addCell(cell);
-            }
-            document.add(pdfPTable);
+            }*/
+
+        pdfPTable.addCell(eightCellls.get(1));
+        pdfPTable.addCell(eightCellls.get(0));
+        pdfPTable.addCell(eightCellls.get(3));
+        pdfPTable.addCell(eightCellls.get(2));
+        pdfPTable.addCell(eightCellls.get(5));
+        pdfPTable.addCell(eightCellls.get(4));
+        pdfPTable.addCell(eightCellls.get(7));
+        pdfPTable.addCell(eightCellls.get(6));
+
+        document.add(pdfPTable);
+    }
+
+    private PdfPCell getWordHints(Word lookedUpWord) {
+
+        Font wordClassFont = new Font(Font.FontFamily.TIMES_ROMAN);
+        wordClassFont.setStyle(Font.BOLD);
+
+        Paragraph p1 = new Paragraph(lookedUpWord.getWordClass() != null ? lookedUpWord.getWordClass().toUpperCase()+"  " : "");
+        p1.setAlignment(Element.ALIGN_CENTER);
+        p1.setFont(wordClassFont);
+
+        Paragraph p2 = new Paragraph(lookedUpWord.getTranslationsString().replaceAll("\\s*,\\s*$", ""));
+        p2.setAlignment(Element.ALIGN_CENTER);
+        Font translationFont = new Font(Font.FontFamily.HELVETICA);
+        translationFont.setStyle(Font.ITALIC);
+        p2.setFont(translationFont);
+
+        Font inflectionsFont = new Font(Font.FontFamily.COURIER);
+        inflectionsFont.setStyle(Font.BOLDITALIC);
+        Paragraph p3 = new Paragraph(lookedUpWord.getInflectionsString().replaceAll("\\s*,\\s*$", ""));
+        p3.setAlignment(Element.ALIGN_CENTER);
+        p3.setFont(inflectionsFont);
+
+        PdfPCell cell = new PdfPCell();
+        cell.addElement(p1);
+        cell.addElement(Chunk.NEWLINE);
+        cell.addElement(p2);
+        cell.addElement(Chunk.NEWLINE);
+        cell.addElement(p3);
+        cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+
+        return cell;
     }
 
     private void printWords(Document document, List<Word> words) throws DocumentException {
